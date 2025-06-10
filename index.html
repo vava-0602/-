@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>🌱 일상 속 탄소발자국 계산기 & 교실 활동</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background-color: #f0f8f5; }
+        h1, h2 { color: #2c3e50; }
+        label { display: block; margin-top: 10px; }
+        input[type="number"], textarea { width: 300px; margin-top: 5px; padding: 5px; }
+        textarea { height: 60px; }
+        button { margin-top: 20px; padding: 10px 20px; font-size: 1em; }
+        #result { margin-top: 30px; font-size: 1.2em; color: green; font-weight: bold; }
+        .section { background: white; padding: 20px; margin-bottom: 20px; border-radius: 10px; box-shadow: 0 0 10px #ccc; }
+        .info { font-size: 0.95em; color: #555; }
+    </style>
+</head>
+<body>
+
+    <audio autoplay loop>
+      <source src="background-music.mp3" type="audio/mpeg">
+      브라우저가 오디오를 지원하지 않습니다.
+    </audio>
+
+    <h1>🌍 일상 속 탄소발자국 계산기</h1>
+    <p class="info">아래 항목을 입력하고, 오늘 내가 배출한 탄소량을 계산해 보세요! 🌿</p>
+
+    <form id="carbonForm">
+        <div class="section">
+            <h2>🍱 급식</h2>
+            <label>고기 반찬을 몇 번 먹었나요? <input type="number" id="meatMeals" value="0" min="0"></label>
+            <label>채소 위주 식단을 몇 번 먹었나요? <input type="number" id="veggieMeals" value="0" min="0"></label>
+        </div>
+        <div class="section">
+            <h2>🚗 이동 수단</h2>
+            <label>버스를 몇 번 탔나요? <input type="number" id="busTrips" value="0" min="0"></label>
+            <label>걸어서 이동한 횟수는? <input type="number" id="walkTrips" value="0" min="0"></label>
+        </div>
+        <div class="section">
+            <h2>🔌 디지털 사용</h2>
+            <label>스마트폰/컴퓨터 사용 시간(시간)? <input type="number" id="screenTime" value="0" min="0"></label>
+        </div>
+        <div class="section">
+            <h2>🗑️ 소비</h2>
+            <label>일회용품을 몇 개 사용했나요? <input type="number" id="disposables" value="0" min="0"></label>
+        </div>
+        <div class="section">
+            <h2>🏠 집에서의 활동</h2>
+            <label>양치할 때 컵을 사용하지 않은 횟수는? <input type="number" id="noCupBrushing" value="0" min="0"></label>
+            <label>샤워 시간(총 분)? <input type="number" id="showerMinutes" value="0" min="0"></label>
+        </div>
+        <button type="button" onclick="calculateCarbon()">총 탄소배출량 계산하기</button>
+    </form>
+
+    <div id="result"></div>
+
+    <div class="section">
+        <h2>💡 탄소배출량에 따른 안내 예시</h2>
+        <ul>
+            <li><strong>1~2kg:</strong> 계속 잘 실천하고 있어요!</li>
+            <li><strong>2~5kg:</strong> 일회용품 줄이기, 걷기 생활화 시도!</li>
+            <li><strong>5~10kg:</strong> 고기 줄이기, 샤워 시간 줄이기!</li>
+            <li><strong>10kg 이상:</strong> 전반적 습관 개선 권장!</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>📌 계산 결과 활용 방법</h2>
+        <p>오늘 내가 얼마나 많은 탄소를 배출했는지 확인하고, 일상에서 줄일 수 있는 부분을 찾는 데 활용해요.</p>
+        <ul>
+            <li>반 친구들과 탄소배출량 비교해보기</li>
+            <li>가장 탄소가 많이 나온 항목 분석</li>
+            <li>탄소 줄이기 도전 미션 세우기</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>📝 나의 다짐과 실천</h2>
+        <label>🌱 오늘 나의 탄소 줄이기 다짐을 적어보세요</label>
+        <textarea placeholder="예: 내일은 고기 대신 채소 반찬을 먹을래요!"></textarea>
+
+        <label>🏡 오늘 내가 실천한 친환경 행동을 적어보세요</label>
+        <textarea placeholder="예: 양치할 때 컵을 사용했어요. 전자기기 사용을 1시간 줄였어요."></textarea>
+    </div>
+
+    <div class="section">
+        <h2>📚 교실 활동 아이디어</h2>
+        <ul>
+            <li><strong>급식 속 탄소발자국 찾기:</strong> 오늘 급식 메뉴를 분류하고 고기/채식 메뉴로 나누어 탄소량 계산하기</li>
+            <li><strong>우리 반 평균은 몇 kg?</strong> 반 전체 데이터를 모아 평균을 내고 시각화해 보기</li>
+            <li><strong>디지털 사용 줄이기 캠페인:</strong> 디지털 사용 시간을 줄이는 실천 계획 만들기</li>
+            <li><strong>탄소 줄이기 약속:</strong> ‘내일은 채식하기’ 등 하루 실천 목표 정하기</li>
+            <li><strong>제로 웨이스트 미션:</strong> 일회용품 대신 사용할 수 있는 대안 찾기</li>
+        </ul>
+    </div>
+
+    <script>
+        function calculateCarbon() {
+            const meatMeals = parseInt(document.getElementById('meatMeals').value) || 0;
+            const veggieMeals = parseInt(document.getElementById('veggieMeals').value) || 0;
+            const busTrips = parseInt(document.getElementById('busTrips').value) || 0;
+            const walkTrips = parseInt(document.getElementById('walkTrips').value) || 0;
+            const screenTime = parseInt(document.getElementById('screenTime').value) || 0;
+            const disposables = parseInt(document.getElementById('disposables').value) || 0;
+            const noCupBrushing = parseInt(document.getElementById('noCupBrushing').value) || 0;
+            const showerMinutes = parseInt(document.getElementById('showerMinutes').value) || 0;
+
+            let carbon = 0;
+            carbon += meatMeals * 2.7;
+            carbon += veggieMeals * 0.5;
+            carbon += busTrips * 0.15;
+            carbon += screenTime * 0.06;
+            carbon += disposables * 0.2;
+            carbon += noCupBrushing * 0.1;
+            carbon += showerMinutes * 0.15;
+
+            document.getElementById('result').innerText =
+                "🌿 오늘 당신의 총 탄소배출량은 약 " + carbon.toFixed(2) + " kg CO₂입니다!";
+        }
+    </script>
+</body>
+</html>
